@@ -6,6 +6,20 @@ $font-stack: 'IBM Plex Sans', sans-serif;
 $paragraph-size: 1.5em;
 $background: #FA9500;
 
+@mixin flexCenter($direction, $content, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin buttonStyle {
+    button {
+        background: none;
+        border-style: none;
+    }
+}
+
 
 body {
     margin: 0px;
@@ -16,11 +30,11 @@ body {
 }
 
 nav {
-    background-color: $primary-color;
+
     width: auto;
+    @include flexCenter(row, space-between, center);
     padding: 15px;
-    display: flex;
-    justify-content: space-between;
+
     color: $primary-text-color;
 
 
@@ -35,10 +49,7 @@ nav {
         display: flex;
         gap: 15px;
 
-        button {
-            background: none;
-            border-style: none;
-        }
+        @include buttonStyle;
     }
 
 }
@@ -49,12 +60,13 @@ article {
     color: $primary-text-color;
     padding-left: 45px;
     padding-right: 45px;
-    display: flex;
-    justify-content: space-between;
+    @include flexCenter(row, space-between, center);
+
 
     .impact-section {
-        display: flex;
-        flex-direction: column;
+
+
+
         gap: 25px
     }
 
@@ -79,6 +91,10 @@ article {
         border-radius: 35px;
         color: white;
         font-size: 1em;
+
+        &:hover {
+            transform: scale(1.1);
+        }
 
 
     }
@@ -171,11 +187,103 @@ section {
     }
 }
 
+.about-us {
+    padding-bottom: 60px;
+
+
+    h2 {
+        font-weight: bold;
+        padding-bottom: 60px;
+    }
+
+    .mission-section {
+
+        @include flexCenter(row, space-evenly, center);
+
+        .earth {
+            width: 30vw;
+            display: flex;
+            gap: 40px;
+            color: #E86424;
+
+
+            img {
+                object-fit: contain;
+            }
+
+            p {
+                text-align: center;
+                font-size: $paragraph-size;
+            }
+        }
+
+        .innovation {
+            @extend .earth;
+        }
+    }
+
+}
+
+.gallery {
+    h2 {
+        font-weight: bold;
+        padding-bottom: 60px;
+    }
+
+    .gallery-image {
+
+        @include flexCenter(row, space-between, center);
+
+        img {
+            width: 28vw;
+            height: 45vh;
+            object-fit: cover;
+            border-radius: 16px;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.location {
+    color: #E86424;
+
+    h2 {
+        padding-bottom: 60px;
+        padding: 60px;
+
+    }
+
+    .map {
+        @include flexCenter(row, center, center);
+        padding-bottom: 50px;
+
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+
+}
+
+
+
 
 
 footer {
 
     background-color: $background;
     width: 100%;
-    height: 200px;
+    height: auto;
+    padding: 40px;
+    color: white;
+
+    .social-media {
+        @include flexCenter(row, center, center);
+        gap: 40px;
+        padding-bottom: 40px;
+    }
 }
